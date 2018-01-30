@@ -1,0 +1,104 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  deleteImageById:
+    Properties:
+      CodeUri: s3://serverless-book-sample-spa2/d8c69984cf52e20bdae9f1b739ed647f
+      Description: ''
+      Environment:
+        Variables:
+          BUCKET_NAME: photos-nishikei
+          TABLE_NAME: photos
+      Events:
+        Api:
+          Properties:
+            Method: delete
+            Path: /images/{id}
+          Type: Api
+      Handler: delete-image-by-id.lambda_handler
+      MemorySize: 128
+      Role: arn:aws:iam::921297957993:role/lambda-dynamodb-role
+      Runtime: python3.6
+      Timeout: 3
+    Type: AWS::Serverless::Function
+  getImageById:
+    Properties:
+      CodeUri: s3://serverless-book-sample-spa2/a8728d1e80975ac8703ee31387b8c8e5
+      Description: ''
+      Environment:
+        Variables:
+          BUCKET_NAME: photos-nishikei
+          TABLE_NAME: photos
+      Events:
+        Api:
+          Properties:
+            Method: get
+            Path: /images/{id}
+          Type: Api
+      Handler: get-image-by-id.lambda_handler
+      MemorySize: 128
+      Role: arn:aws:iam::921297957993:role/lambda-dynamodb-role
+      Runtime: python3.6
+      Timeout: 3
+    Type: AWS::Serverless::Function
+  getImages:
+    Properties:
+      CodeUri: s3://serverless-book-sample-spa2/8cbca193e76da13b8e3291b4abc9dd3a
+      Description: ''
+      Environment:
+        Variables:
+          BUCKET_NAME: photos-nishikei
+          TABLE_NAME: photos
+      Events:
+        Api:
+          Properties:
+            Method: get
+            Path: /images
+          Type: Api
+      Handler: get-images.lambda_handler
+      MemorySize: 128
+      Role: arn:aws:iam::921297957993:role/lambda-dynamodb-role
+      Runtime: python3.6
+      Timeout: 3
+    Type: AWS::Serverless::Function
+  postImages:
+    Properties:
+      CodeUri: s3://serverless-book-sample-spa2/7eda7c95ea4b8e92883a44b59137017f
+      Description: ''
+      Environment:
+        Variables:
+          BUCKET_NAME: photos-nishikei
+          TABLE_NAME: photos
+      Events:
+        Api:
+          Properties:
+            Method: post
+            Path: /images
+          Type: Api
+      Handler: post-images.lambda_handler
+      MemorySize: 128
+      Role: arn:aws:iam::921297957993:role/lambda-dynamodb-role
+      Runtime: python3.6
+      Timeout: 15
+    Type: AWS::Serverless::Function
+  updateImage:
+    Properties:
+      CodeUri: s3://serverless-book-sample-spa2/292e5a733816922de11caaf774971bf3
+      Description: ''
+      Environment:
+        Variables:
+          BUCKET_NAME: photos-nishikei
+          TABLE_NAME: photos
+      Events:
+        LambdaMicroservice:
+          Properties:
+            Method: PUT
+            Path: /images
+          Type: Api
+      Handler: update-image.lambda_handler
+      MemorySize: 128
+      Role: arn:aws:iam::921297957993:role/lambda-dynamodb-role
+      Runtime: python3.6
+      Timeout: 15
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

@@ -1,0 +1,13 @@
+{
+    "getimages": {
+        "apigateway": {
+            "path": "/images",
+            "method": {
+                "value": "GET",
+                "items": [
+                    "GET"
+                ]
+            }
+        }
+    }
+}
